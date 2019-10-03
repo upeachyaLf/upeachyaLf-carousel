@@ -1,0 +1,49 @@
+.wrapper img{
+    float: left;
+    width: 400px;
+}
+.wrapper{
+    width: max-content;
+    overflow: hidden;
+}
+.container{
+    width: 400px;
+    overflow: hidden;
+    position: relative;
+}
+
+#prev-button{
+    position: absolute;
+    left: 0;
+    top: calc(50% - 16px);
+    font-size: 33px;
+    cursor: pointer;
+    font-weight: 600;
+}
+#next-button{
+    position: absolute;
+    right: 0;
+    top: calc(50% - 16px);
+    font-size: 33px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+ul#indicators{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+ul#indicators li{
+    list-style: none;
+    display: inline-table;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+ul#indicators li.active{
+    background: yellow;
+    border-color: yellow;
+}
