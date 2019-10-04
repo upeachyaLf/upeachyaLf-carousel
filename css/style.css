@@ -6,7 +6,7 @@
     width: max-content;
     overflow: hidden;
 }
-.container{
+.carousel-container{
     width: 400px;
     overflow: hidden;
     position: relative;
@@ -34,6 +34,7 @@ ul#indicators{
     bottom: 0;
     width: 100%;
     text-align: center;
+    box-sizing: border-box;
 }
 ul#indicators li{
     list-style: none;
