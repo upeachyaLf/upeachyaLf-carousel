@@ -9,16 +9,21 @@ for (var j=0; j<elementCount; j++){
 }
 
 function createCarousel (container, timer) {
-    console.log(container)
     var wrapper = container.children[0];
     var imageLength = wrapper.children.length;
     var imageWidth = wrapper.children[0].offsetWidth;
+    console.log("not here")
     var imageCount = 0;
     var marginLeft = 0;
     
     // for autoplay
     var myTimer = setInterval(() => goNext(), timer);
     myTimer
+
+    window.onresize = function (){
+        imageWidth = wrapper.children[0].offsetWidth;
+        this.location.reload()
+    }
 
 
     // for controls
@@ -56,8 +61,10 @@ function createCarousel (container, timer) {
             imageCount = 0;
             animatePrev(0, 50)
         }else{
+            console.log("here")
             imageCount++;
             var passMargin = -(imageWidth * imageCount);
+            console.log("image", imageWidth)
             animateNext(passMargin, 20)
         } 
         handleIndicator(imageCount);
