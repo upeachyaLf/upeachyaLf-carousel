@@ -1,6 +1,6 @@
 class BallGame {
     constructor(quantity, speed, radius){
-        this.ballCount = quantity;
+        this.initialBallCount = quantity;
         this.canvas = document.getElementById("myCanvas");
         this.ctx = this.canvas.getContext("2d");
         this.ballRadius = radius;
@@ -11,26 +11,36 @@ class BallGame {
         this.ballDx = [];
         this.ballDy = [];
         this.balls = [];
-        // this.FPS = 60;
-        // this.frameLimit = 1000 / this.FPS;
         this.frameLimit = speed;
         this.removeIndex = null;
+
+        this.ballCount = quantity;
+        this.score = 0;
+        this.scoreBoard = document.createElement('div')
+        this.scoreBoard.style.textAlign = 'center'
+
+        this.thumbImg = document.createElement('img');
+        this.thumbImg.src = './images/ant.png';
     }
     
 
     init = () =>{
         this.getBallCordinates();
         while (this.checkCollision() == true) this.getBallCordinates();
-        
-        for (var i=0; i<this.ballCount; i++){
-            this.drawBall(this.ballX[i], this.ballY[i], i);
+  
+        this.thumbImg.onload = () => {
+            for (var i=0; i<this.ballCount; i++){
+                this.drawBall(this.ballX[i], this.ballY[i], i);
+            }
         }
 
         this.checkCollision()
 
+
         for (var i=0; i<this.ballCount; i++){
             setInterval(this.move, 100);
         }
+        
 
         var elemLeft = this.canvas.offsetLeft;
         var elemTop = this.canvas.offsetTop;
@@ -49,16 +59,20 @@ class BallGame {
             }
 
             if (this.removeIndex !== null) {
-                console.log(this.removeIndex)
                 this.ballCount -= 1;
                 this.ballX.splice(this.removeIndex, 1);
                 this.ballY.splice(this.removeIndex, 1);
                 this.ballDx.splice(this.removeIndex, 1);
                 this.ballDy.splice(this.removeIndex, 1);
+                this.score += 1;
+                this.scoreBoard.innerHTML = 'Your Score: ' + this.score;
                 this.removeIndex = null;
             }
         })
 
+        this.scoreBoard.innerHTML = 'Your Score: 0';
+        document.getElementById('main-wrap').append(this.scoreBoard)
+        
     }
 
     
@@ -87,12 +101,8 @@ class BallGame {
 
 
     drawBall = (x, y, i) => {
-        this.ctx.beginPath();
-        this.balls[i] = this.ctx.arc(x, y, this.ballRadius, 0, Math.PI*2);
+        this.balls[i] = this.ctx.drawImage(this.thumbImg, x, y, 1.5*this.ballRadius, 1.5*this.ballRadius);
         this.balls[i]
-        this.ctx.fillStyle = "#0095DD";
-        this.ctx.fill();
-        this.ctx.closePath();
     }
 
     move = () =>{
@@ -152,5 +162,5 @@ class BallGame {
 // speed: for better performance use a number between 0 and 1
 // radius: radius of ball in pixels
 
-var game = new BallGame(20, .5, 10)
+var game = new BallGame(20, .3, 15)
 game.init() 
