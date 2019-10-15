@@ -1,0 +1,47 @@
+#game-container{
+    width: 264px;
+    height: 400px;
+    overflow: hidden;
+    margin: auto;
+}
+
+#main-wrapper{
+    padding: 5%;
+    position: relative;
+}
+
+#background-wrapper{
+    width: 264px;
+    height: 400px;
+    background: url('../images/car_track.png');
+    background-repeat: no-repeat;
+    /* background-position-y: -1167px */
+}
+
+#game-over{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    font-family: cursive;
+    font-weight: 600;
+    color: #ff0000;
+    display: none;
+}
+
+#score{
+    text-align: center;
+}
+
+#start-button{
+    position: absolute;
+    top: 84px;
+    left: calc(47%);
+    background: #fff;
+    border: 0;
+    padding: 6px;
+    font-size: 17px;
+    font-weight: 600;
+    font-family: sans-serif;
+}

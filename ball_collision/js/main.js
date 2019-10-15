@@ -32,32 +32,32 @@ class BallGame {
             setInterval(this.move, 100);
         }
 
-        var elemLeft = this.canvas.offsetLeft;
-        var elemTop = this.canvas.offsetTop;
-        this.canvas.addEventListener('click',(event)=>{
-            var x = event.pageX - elemLeft;
-            var y = event.pageY - elemTop;
-            var circleAx, circleAy, difx, dify, distance;
+        // var elemLeft = this.canvas.offsetLeft;
+        // var elemTop = this.canvas.offsetTop;
+        // this.canvas.addEventListener('click',(event)=>{
+        //     var x = event.pageX - elemLeft;
+        //     var y = event.pageY - elemTop;
+        //     var circleAx, circleAy, difx, dify, distance;
 
-            for (var i=0; i<this.ballCount; i++){
-                circleAx = this.ballX[i];
-                circleAy = this.ballY[i];
-                difx = circleAx - x;
-                dify = circleAy - y;
-                distance = Math.sqrt(difx * difx + dify * dify);
-                if (distance < this.ballRadius*2 ) this.removeIndex = i;
-            }
+        //     for (var i=0; i<this.ballCount; i++){
+        //         circleAx = this.ballX[i];
+        //         circleAy = this.ballY[i];
+        //         difx = circleAx - x;
+        //         dify = circleAy - y;
+        //         distance = Math.sqrt(difx * difx + dify * dify);
+        //         if (distance < this.ballRadius*2 ) this.removeIndex = i;
+        //     }
 
-            if (this.removeIndex !== null) {
-                console.log(this.removeIndex)
-                this.ballCount -= 1;
-                this.ballX.splice(this.removeIndex, 1);
-                this.ballY.splice(this.removeIndex, 1);
-                this.ballDx.splice(this.removeIndex, 1);
-                this.ballDy.splice(this.removeIndex, 1);
-                this.removeIndex = null;
-            }
-        })
+        //     if (this.removeIndex !== null) {
+        //         console.log(this.removeIndex)
+        //         this.ballCount -= 1;
+        //         this.ballX.splice(this.removeIndex, 1);
+        //         this.ballY.splice(this.removeIndex, 1);
+        //         this.ballDx.splice(this.removeIndex, 1);
+        //         this.ballDy.splice(this.removeIndex, 1);
+        //         this.removeIndex = null;
+        //     }
+        // })
 
     }
 
@@ -152,5 +152,5 @@ class BallGame {
 // speed: for better performance use a number between 0 and 1
 // radius: radius of ball in pixels
 
-var game = new BallGame(20, .5, 10)
+var game = new BallGame(20, 1, 10)
 game.init() 
